@@ -1,9 +1,8 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../core/auth/auth.service';
 import {Router} from '@angular/router';
 import {PlataformDetectorService} from '../../core/plataform/plataform-detector.service';
-import {TokenService} from '../../core/token/token.service';
 
 @Component({
   selector: 'app-signin',
@@ -22,11 +21,13 @@ export class SigninComponent implements OnInit {
               private plataformDetectorService: PlataformDetectorService,
               private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       userName: ['', Validators.required],
       password: ['', Validators.required]
     });
+    this.plataformDetectorService.isPlatformBrowser() &&
+    this.userNameInput.nativeElement.focus();
   }
 
   login() {

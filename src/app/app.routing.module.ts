@@ -8,31 +8,38 @@ import { PhotoListResolver } from './photos/photo-list/photo-list.resolver';
 import { SigninComponent } from './home/signin/signin.component';
 import {AuthGuard} from './core/auth/auth.guard';
 import {SignUpComponent} from './home/sign-up/sign-up.component';
+import {HomeComponent} from './home/home.component';
 
 const routes: Routes = [
-    // { 
-    //     path: 'user/:userName', 
+    // {
+    //     path: 'user/:userName',
     //     component: PhotoListComponent,
     //     resolve: {
     //         photos: PhotoListResolver
     //     }
     // },
-    // { 
-    //     path: 'p/add', 
-    //     component: PhotoFormComponent 
+    // {
+    //     path: 'p/add',
+    //     component: PhotoFormComponent
     // },
-    // { 
-    //     path: '**', 
-    //     component: NotFoundComponent 
+    // {
+    //     path: '**',
+    //     component: NotFoundComponent
     // },
     {
-        path: '',
-        component: SigninComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'signup',
-        component: SignUpComponent
+      path: '',
+      component: HomeComponent,
+      canActivate: [AuthGuard],
+      children: [
+        {
+          path: '',
+          component: SigninComponent
+        },
+        {
+          path: 'signup',
+          component: SignUpComponent
+        }
+      ]
     }
 ];
 
