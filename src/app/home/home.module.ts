@@ -7,6 +7,8 @@ import {RouterModule} from '@angular/router';
 import {CoreModule} from '../core/core.module';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import {HomeComponent} from './home.component';
+import {HomeRoutingModule} from './home.routing.module';
+import {SignUpService} from './sign-up/sign-up.service';
 
 @NgModule({
   imports: [
@@ -15,8 +17,10 @@ import {HomeComponent} from './home.component';
     FormsModule,
     VMessageModule,
     RouterModule,
-    CoreModule
+    CoreModule,
+    HomeRoutingModule
   ],
-  declarations: [SigninComponent, SignUpComponent, HomeComponent]
+  declarations: [SigninComponent, SignUpComponent, HomeComponent],
+  providers: [SignUpService]
 })
 export class HomeModule { }
